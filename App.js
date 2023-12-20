@@ -1,8 +1,19 @@
 import axios from "axios";
 import * as Location from "expo-location";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { useState } from "react";
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+} from "react-native";
 
 export default function App() {
+    const [location, setLocation] = useState(""); // State to hold the user-entered location
+    const [weatherData, setWeatherData] = useState(null); // State to hold weather data for the entered location
+    const [currentLocationWeatherData, setCurrentLocationWeatherData] =
+        useState(null); // State to hold weather data for the current location
     const API_KEY = "b49d485749mshab1bcba4baf0c9ap114f5ejsn9ed3298ece68"; // Replace with your actual API key
     const WeatherInfo = ({ location, temp_c, condition }) => (
         <View style={styles.weatherContainer}>
